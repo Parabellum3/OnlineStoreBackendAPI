@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Models\Category.cs">
+        <DependentUpon>BaseModel.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Models\DigitalProduct.cs">
+        <DependentUpon>BaseProduct.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Models\PhysicalProduct.cs">
+        <DependentUpon>BaseProduct.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Models\BaseProduct.cs">
+        <DependentUpon>BaseModel.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Models\Cart.cs">
+        <DependentUpon>BaseModel.cs</DependentUpon>
+      </Compile>
+      <Compile Remove="OnlineStoreBackendTests\**" />
+      <Compile Remove="OnlineStoreBackend.Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="OnlineStoreBackendTests\**" />
+      <EmbeddedResource Remove="OnlineStoreBackend.Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="OnlineStoreBackendTests\**" />
+      <Content Remove="OnlineStoreBackend.Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="OnlineStoreBackendTests\**" />
+      <None Remove="OnlineStoreBackend.Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="OnlineStoreBackendTests\bin\Debug\net6.0\OnlineStoreBackendTests.deps.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackendTests\bin\Debug\net6.0\OnlineStoreBackendTests.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackendTests\obj\OnlineStoreBackendTests.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackendTests\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackendTests\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\bin\Debug\net6.0\OnlineStoreBackend.Tests.deps.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\bin\Debug\net6.0\OnlineStoreBackend.Tests.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\bin\Debug\net6.0\OnlineStoreBackendTests.deps.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\bin\Debug\net6.0\OnlineStoreBackendTests.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\OnlineStoreBackend.Tests.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\OnlineStoreBackendTests.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\project.packagespec.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="DataAccess\" />
+    </ItemGroup>
+
+</Project>

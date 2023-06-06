@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStoreBackendAPI", "OnlineStoreBackendAPI.csproj", "{DEF055CB-D5C6-4EAE-8534-12DC6FC053FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStoreBackend.Tests", "OnlineStoreBackend.Tests\OnlineStoreBackend.Tests.csproj", "{8BB6D775-E578-4869-97AB-C5B3E76F80DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEF055CB-D5C6-4EAE-8534-12DC6FC053FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF055CB-D5C6-4EAE-8534-12DC6FC053FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF055CB-D5C6-4EAE-8534-12DC6FC053FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF055CB-D5C6-4EAE-8534-12DC6FC053FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BB6D775-E578-4869-97AB-C5B3E76F80DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BB6D775-E578-4869-97AB-C5B3E76F80DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BB6D775-E578-4869-97AB-C5B3E76F80DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BB6D775-E578-4869-97AB-C5B3E76F80DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
