@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using OnlineStoreBackendAPI.DataAccess;
 using OnlineStoreBackendAPI.Models;
 
 namespace OnlineStoreBackendAPI.Controllers
@@ -12,10 +14,14 @@ namespace OnlineStoreBackendAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        [HttpGet(Name = "GetProductDescription")]
-        public BaseProductM GetById(int productId)
+        public BaseProduct GetById(int Id)
         {
-            
+            throw new NotImplementedException();
+        }
+
+        public List<BaseProduct> GetByCategory(int categoryId)
+        {
+            return new List<BaseProduct>();
         }
     }
 }

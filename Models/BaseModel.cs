@@ -1,3 +1,4 @@
+using OnlineStoreBackendAPI.DataAccess;
 namespace OnlineStoreBackendAPI.Models;
 
 public abstract class BaseModel
@@ -6,5 +7,6 @@ public abstract class BaseModel
 
     public string Name { get; set; } = "";
 
-    public string Description { get; set; } = "";   
+    public string Description { get; set; } = "";
+    
 }

@@ -1,6 +1,6 @@
 namespace OnlineStoreBackendAPI.Models;
 
-public class AttributeInProduct : BaseModel
+public class AttributeValue : BaseModel
 {
     public BaseProduct Product { get; set; } = new BaseProduct(); 
 
