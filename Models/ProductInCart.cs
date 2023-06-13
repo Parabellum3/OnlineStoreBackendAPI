@@ -1,6 +1,6 @@
 namespace OnlineStoreBackendAPI.Models;
 
-public class ProductAttribute : BaseModel
+public class ProductInCart
 {
     
 }

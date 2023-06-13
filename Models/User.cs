@@ -1,6 +1,6 @@
 namespace OnlineStoreBackendAPI.Models;
 
-public class DigitalProduct : BaseProduct
+public class User
 {
     
 }
