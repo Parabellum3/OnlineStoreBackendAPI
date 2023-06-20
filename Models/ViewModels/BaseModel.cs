@@ -1,5 +1,4 @@
-using OnlineStoreBackendAPI.DataAccess;
-namespace OnlineStoreBackendAPI.Models;
+namespace OnlineStoreBackendAPI.Models.ViewModels;
 
 public abstract class BaseModel
 {

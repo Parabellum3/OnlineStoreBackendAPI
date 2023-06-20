@@ -17,26 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Models\Category.cs">
-        <DependentUpon>BaseModel.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Models\BaseProduct.cs">
-        <DependentUpon>BaseModel.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Models\Cart.cs">
-        <DependentUpon>BaseModel.cs</DependentUpon>
-      </Compile>
       <Compile Remove="OnlineStoreBackendTests\**" />
       <Compile Remove="OnlineStoreBackend.Tests\**" />
-      <Compile Update="Models\AttributeValue.cs">
-        <DependentUpon>BaseModel.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Models\Attribute.cs">
-        <DependentUpon>BaseModel.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Models\User.cs">
-        <DependentUpon>BaseModel.cs</DependentUpon>
-      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -68,6 +50,10 @@
       <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\OnlineStoreBackendTests.csproj.nuget.dgspec.json" />
       <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\project.assets.json" />
       <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\project.packagespec.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="DataAccess\Migrations\" />
     </ItemGroup>
 
 </Project>

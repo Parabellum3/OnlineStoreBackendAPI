@@ -1,27 +1,40 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using OnlineStoreBackendAPI.DataAccess;
-using OnlineStoreBackendAPI.Models;
+using OnlineStoreBackendAPI.DataAccess.Abstracts;
+using OnlineStoreBackendAPI.Models.DTO;
+using OnlineStoreBackendAPI.Models.ViewModels;
 
 namespace OnlineStoreBackendAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
-        public BaseProduct GetById(int Id)
+        private readonly IProductRepository _repository;
+
+        public ProductController(IProductRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
         }
 
-        public List<BaseProduct> GetByCategory(int categoryId)
+        [HttpPost]
+        public ProductDto GetById([FromBody]int id)
         {
-            return new List<BaseProduct>();
+            return  new ProductDto(_repository.GetById(id));
         }
+
+        [HttpPost]
+        public List<ProductDto> GetByCategory(int categoryId)
+        {
+          var products  = _repository.GetByCategory(categoryId);
+          List<ProductDto> output = new List<ProductDto>();
+          foreach (Product product in products)
+          {
+              output.Add(new ProductDto(product));
+          }
+
+          return output;
+        }
+        
+       
     }
 }

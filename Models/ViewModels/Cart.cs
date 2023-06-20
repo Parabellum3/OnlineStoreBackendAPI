@@ -1,4 +1,4 @@
-namespace OnlineStoreBackendAPI.Models;
+namespace OnlineStoreBackendAPI.Models.ViewModels;
 
 public class Cart : BaseModel
 {

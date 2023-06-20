@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineStoreBackendAPI.DataAccess;
+using OnlineStoreBackendAPI.DataAccess.Abstracts;
+using OnlineStoreBackendAPI.DataAccess.Repositories;
+using OnlineStoreBackendAPI.Models.ViewModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +12,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer());
+//configure db access. P
+builder.Services.AddDbContext<MsSqlDataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("db")));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IDataContext, MsSqlDataContext>();
 
 var app = builder.Build();
 
