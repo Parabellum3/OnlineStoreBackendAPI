@@ -16,8 +16,6 @@ public class CategoryDto : BaseDto
          Description = category.Description;
          if (category.ParentCategory != null) ParentCategory = new CategoryDto(category.ParentCategory);
      }
-    public int Id { get; set; }
-    public string Title { get; set; }
     public string Description { get; set; }
     public CategoryDto ParentCategory { get; set; }
 
