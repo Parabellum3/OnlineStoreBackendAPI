@@ -5,46 +5,55 @@ namespace OnlineStoreBackendAPI.DataAccess.Repositories;
 
 public class ProductRepository : BaseRepository<Product, int>, IProductRepository
 {
-    public ProductRepository(IDataContext context) : base(context) {}
+    public ProductRepository(IDataContext context) : base(context)
+    {
+    }
 
     public override Product GetById(int id)
     {
         return new Product
         {
             Id = id,
-            Name = "Test",
+            Title = "Test",
             Description = "Test",
-            Price = 12345, 
+            Price = 12345,
             Category = new Category
             {
                 Id = 123,
-                Name = "TestCategory",
+                Title = "TestCategory",
                 Description = "TestDescription",
                 ParentCategory = null
             },
             AttributeValues = new List<AttributeValue>()
-            
+
         };
     }
-    
-    public IEnumerable<Product> GetByCategory(int categoryId)
+
+    public List<Product> GetByCategory(int categoryId)
     {
-        var result = new List<Product>();
-        result.Add(new Product
+        var result = new List<Product>
         {
-            Id = 123,
-            Name = "Test",
-            Description = "Test",
-            Price = 12345, 
-            Category = new Category
+            new Product
             {
-                Id = categoryId,
-                Name = "TestCategory",
-                Description = "TestDescription",
-                ParentCategory = null
+                Id = 123,
+                Title = "Test",
+                Description = "Test",
+                Price = 12345,
+                Category = new Category
+                {
+                    Id = categoryId,
+                    Title = "TestCategory",
+                    Description = "TestDescription",
+                    ParentCategory = null
+                }
             }
-        }
-        );
+        };
         return result;
     }
+
+    public int Add(Product product)
+    {
+        return 200;
+    }
+
 }

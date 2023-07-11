@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using OnlineStoreBackendAPI.DataAccess;
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
 using OnlineStoreBackendAPI.DataAccess.Repositories;
+using OnlineStoreBackendAPI.Models.DTO;
 using OnlineStoreBackendAPI.Models.ViewModels;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ builder.Services.AddDbContext<MsSqlDataContext>(options =>
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IDataContext, MsSqlDataContext>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 var app = builder.Build();
 

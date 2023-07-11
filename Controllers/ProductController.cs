@@ -16,25 +16,31 @@ namespace OnlineStoreBackendAPI.Controllers
             _repository = repository;
         }
 
-        [HttpPost]
-        public ProductDto GetById([FromBody]int id)
+        [HttpGet]
+        public ProductDto GetById(int id)
         {
-            return  new ProductDto(_repository.GetById(id));
+            return new ProductDto(_repository.GetById(id));
         }
 
-        [HttpPost]
+        [HttpGet]
         public List<ProductDto> GetByCategory(int categoryId)
         {
-          var products  = _repository.GetByCategory(categoryId);
-          List<ProductDto> output = new List<ProductDto>();
-          foreach (Product product in products)
-          {
-              output.Add(new ProductDto(product));
-          }
+            var products = _repository.GetByCategory(categoryId);
+            List<ProductDto> output = new List<ProductDto>();
+            foreach (Product product in products)
+            {
+                output.Add(new ProductDto(product));
+            }
 
-          return output;
+            return output;
         }
-        
-       
+
+        [HttpPost]
+        public int Add(ProductDto dto)
+        {
+            
+            return 200;
+        }
+
     }
 }
