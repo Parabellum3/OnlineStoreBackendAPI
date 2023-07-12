@@ -40,6 +40,6 @@ public class CategoryController : ControllerBase
     [HttpPost]
     public int Add(CategoryDto categoryDto)
     {
-        return 200;
+        return _repository.Add(categoryDto);
     }
 }

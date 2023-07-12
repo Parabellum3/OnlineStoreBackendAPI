@@ -48,4 +48,9 @@ public class CategoryRepository : BaseRepository<Category,int>, ICategoryReposit
         };
         return result;
     }
+
+    public int Add(CategoryDto category)
+    {
+        return 200;
+    }
 }
