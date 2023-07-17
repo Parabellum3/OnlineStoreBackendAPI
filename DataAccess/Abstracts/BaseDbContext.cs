@@ -19,9 +19,8 @@ public abstract class BaseDbContext<T>: DbContext,IDataContext where T: DbContex
     public DbSet<Product> Products { get; set; }
     public DbSet<Attribute> Attributes { get; set; }
     public DbSet<AttributeValue> AttributeValues { get; set; }
-    public DbSet<Cart> Carts { get; set; }
+    public DbSet<UserProduct> UserProducts { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<CartProduct> CartProducts { get; set; }
     public DbSet<User> Users { get; set; }
     
     #endregion

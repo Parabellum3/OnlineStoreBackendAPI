@@ -31,6 +31,8 @@ public class ProductDto
     [DataMember] public double Price { get; set; }
 
     [DataMember] public string Category { get; set; }
+    
+    [DataMember] public string Description { get; set; }
 
 }
 
