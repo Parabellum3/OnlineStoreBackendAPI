@@ -8,5 +8,5 @@ public interface ICartRepository : IRepository<Cart, int>
     public int CreateCart(User user);
     int AddProductToCart(int productId, int cartId, int quantity = 1);
     int CreateOrder(int userId);
-    List<UserProductDto> GetProducts(int userId);
+    List<CartProductDto> GetProducts(int userId);
 }

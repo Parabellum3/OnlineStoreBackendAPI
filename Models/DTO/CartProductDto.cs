@@ -3,16 +3,16 @@ using OnlineStoreBackendAPI.Models.ViewModels;
 
 namespace OnlineStoreBackendAPI.DataAccess.Repositories;
 
-public class UserProductDto
+public class CartProductDto
 {
     [JsonConstructor]
-    public UserProductDto(){}
+    public CartProductDto(){}
     
-    public UserProductDto(OrderProduct orderProduct)
+    public CartProductDto(CartProduct cartProduct)
     {
-        ProductName = orderProduct.Product.Title;
-        Quantity = orderProduct.Quantity;
-        Price = orderProduct.Product.Price;
+        ProductName = cartProduct.Product.Title;
+        Quantity = cartProduct.Quantity;
+        Price = cartProduct.Product.Price;
         Total = Price * Quantity;
     }
 

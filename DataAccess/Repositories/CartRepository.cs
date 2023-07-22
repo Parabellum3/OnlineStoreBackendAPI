@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
 using OnlineStoreBackendAPI.Models.ViewModels;
 
@@ -65,9 +66,16 @@ public class CartRepository : BaseRepository<Cart,int>, ICartRepository
         return _context.SaveChanges();
     }
 
-    public List<UserProductDto> GetProducts(int cartId)
+    public List<CartProductDto> GetProducts(int cartId)
     {
-        throw new NotImplementedException();
+       var cart = _context.Carts.Include(c => c.CartProducts).FirstOrDefault(p => p.Id == cartId);
+       var result = new List<CartProductDto>();
+       foreach (var cartProduct in cart.CartProducts)
+       {
+           result.Add(new CartProductDto(cartProduct));
+       }
+
+       return result;
     }
 }
 

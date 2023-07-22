@@ -30,7 +30,7 @@ public class CategoryRepository : BaseRepository<Category,int>, ICategoryReposit
 
     public int AddAttribute(ProductAttributeDto attribute)
     {
-        var category = _context.Categories.Include(c => c.Products).FirstOrDefault();
+        var category = _context.Categories.Include(c => c.Products).FirstOrDefault(p => p.Id == attribute.CategoryId);
         var productAttribute = new ProductAttribute()
         {
             Title = attribute.Title,
