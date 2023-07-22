@@ -21,21 +21,25 @@
     <ItemGroup>
       <Compile Remove="OnlineStoreBackendTests\**" />
       <Compile Remove="OnlineStoreBackend.Tests\**" />
+      <Compile Remove="OnlineStoreBackendAPI.Common\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="OnlineStoreBackendTests\**" />
       <EmbeddedResource Remove="OnlineStoreBackend.Tests\**" />
+      <EmbeddedResource Remove="OnlineStoreBackendAPI.Common\**" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Remove="OnlineStoreBackendTests\**" />
       <Content Remove="OnlineStoreBackend.Tests\**" />
+      <Content Remove="OnlineStoreBackendAPI.Common\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="OnlineStoreBackendTests\**" />
       <None Remove="OnlineStoreBackend.Tests\**" />
+      <None Remove="OnlineStoreBackendAPI.Common\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -52,10 +56,18 @@
       <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\OnlineStoreBackendTests.csproj.nuget.dgspec.json" />
       <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\project.assets.json" />
       <_ContentIncludedByDefault Remove="OnlineStoreBackend.Tests\obj\project.packagespec.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackendAPI.Common\bin\Debug\net6.0\OnlineStoreBackendAPI.Common.deps.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackendAPI.Common\obj\OnlineStoreBackendAPI.Common.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackendAPI.Common\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="OnlineStoreBackendAPI.Common\obj\project.packagespec.json" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Migrations\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="OnlineStoreBackendAPI.Common\OnlineStoreBackendAPI.Common.csproj" />
     </ItemGroup>
 
 </Project>

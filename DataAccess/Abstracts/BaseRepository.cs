@@ -23,7 +23,7 @@ public abstract class BaseRepository<TEntity,TKey> : IRepository<TEntity, TKey> 
 
     public  virtual int Insert(TEntity entity)
     {
-        _context.Set<TEntity>().AddAsync(entity);
+        _context.Set<TEntity>().Add(entity);
         return _context.SaveChanges();
     }
 
@@ -43,8 +43,9 @@ public abstract class BaseRepository<TEntity,TKey> : IRepository<TEntity, TKey> 
        return _context.SaveChanges();
     }
 
+    //TODO implement update
     public virtual int Update(TKey id,TEntity entity)
     {
-        throw new NotImplementedException();
+        return 1;
     }
 }

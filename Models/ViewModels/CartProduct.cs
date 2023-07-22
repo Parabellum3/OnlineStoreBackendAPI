@@ -1,6 +1,3 @@
-using OnlineStoreBackendAPI.DataAccess.Abstracts;
-using OnlineStoreBackendAPI.Models.DTO;
-
 namespace OnlineStoreBackendAPI.Models.ViewModels;
 
 public class CartProduct : BaseModel

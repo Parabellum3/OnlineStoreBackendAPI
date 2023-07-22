@@ -1,6 +1,3 @@
-using Microsoft.Build.Framework;
-using Microsoft.VisualStudio.Debugger.Contracts.HotReload;
-
 namespace OnlineStoreBackendAPI.Models.ViewModels;
 
 public class Category : BaseModel

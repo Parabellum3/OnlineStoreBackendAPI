@@ -1,7 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
-using OnlineStoreBackendAPI.Models.DTO;
-
 namespace OnlineStoreBackendAPI.Models.ViewModels;
 
 public class Product : BaseModel

@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using OnlineStoreBackendAPI.Models.DTO;
 using OnlineStoreBackendAPI.Models.ViewModels;
 
 namespace OnlineStoreBackendAPI.DataAccess.Repositories;

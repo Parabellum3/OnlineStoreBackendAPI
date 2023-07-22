@@ -1,5 +1,3 @@
-using OnlineStoreBackendAPI.DataAccess.Abstracts;
-
 namespace OnlineStoreBackendAPI.Models.DTO;
 
 public abstract class BaseDto

@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
 using OnlineStoreBackendAPI.Models.DTO;
 using OnlineStoreBackendAPI.Models.ViewModels;

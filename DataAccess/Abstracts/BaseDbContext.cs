@@ -1,4 +1,3 @@
-using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using OnlineStoreBackendAPI.Models.ViewModels;
 
