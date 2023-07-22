@@ -146,12 +146,12 @@ namespace OnlineStoreBackendAPI.Migrations
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     ProductAttributeId = table.Column<int>(type: "int", nullable: false),
                     IntValue = table.Column<int>(type: "int", nullable: false),
-                    TextValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TextValue = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     BoolValue = table.Column<bool>(type: "bit", nullable: true),
                     DateTimeValue = table.Column<DateTime>(type: "datetime2", nullable: false),
                     GuidValue = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Title = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(250)", nullable: true)
                 },
                 constraints: table =>
                 {
