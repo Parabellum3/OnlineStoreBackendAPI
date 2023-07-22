@@ -45,7 +45,7 @@ public class CategoryController : ControllerBase
 
     [Route("api/[controller]/[action]")]
     [HttpPost]
-    public int AddAttribute(ProductAttribute attribute)
+    public int AddAttribute(ProductAttributeDto attribute)
     {
         return _repository.AddAttribute(attribute);
     }

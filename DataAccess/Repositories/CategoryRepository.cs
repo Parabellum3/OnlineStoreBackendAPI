@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
 using OnlineStoreBackendAPI.Models.DTO;
 using OnlineStoreBackendAPI.Models.ViewModels;
@@ -27,9 +28,25 @@ public class CategoryRepository : BaseRepository<Category,int>, ICategoryReposit
         return _context.SaveChanges();
     }
 
-    public int AddAttribute(ProductAttribute attribute)
+    public int AddAttribute(ProductAttributeDto attribute)
     {
-        _context.ProductAttributes.Add(attribute);
+        var category = _context.Categories.Include(c => c.Products).FirstOrDefault();
+        var productAttribute = new ProductAttribute()
+        {
+            Title = attribute.Title,
+            Category = category
+        };
+        _context.ProductAttributes.Add(productAttribute);
+        
+        foreach (Product product in category.Products)
+        {
+            _context.AttributeValues.Add(new AttributeValue()
+            {
+                TextValue = attribute.DefValue,
+                Product = product,
+                ProductAttribute = productAttribute
+            });
+        }
         return _context.SaveChanges();
     }
 }
