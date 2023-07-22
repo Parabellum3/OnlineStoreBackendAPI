@@ -20,7 +20,7 @@ builder.Services.AddDbContext<MsSqlDataContext>(options =>
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IDataContext, MsSqlDataContext>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

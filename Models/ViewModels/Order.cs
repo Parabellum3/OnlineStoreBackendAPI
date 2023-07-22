@@ -1,12 +1,19 @@
+using OnlineStoreBackendAPI.Models.Enums;
 using OnlineStoreBackendAPI.Models.ViewModels;
 
 namespace OnlineStoreBackendAPI.DataAccess.Abstracts;
 
-public class Order
+public class Order : BaseModel
 {
-    public double Total { get; private set; }
+    public double Total { get;  set; }
 
-    public List<Product> Products { get; private set; }
+    public User User { get;  set; }
+    
+    public ICollection<OrderProduct> OrderProducts { get; set; }
 
-    public User User { get; private set; }
+    public ShippingMethod ShippingMethod { get; set; }
+    
+    public Address ShippingAddress { get; set; }
+    
+    public OrderStatus Status { get; set; }
 }

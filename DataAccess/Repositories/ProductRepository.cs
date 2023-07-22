@@ -1,59 +1,56 @@
+using Microsoft.EntityFrameworkCore;
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
+using OnlineStoreBackendAPI.Models.DTO;
 using OnlineStoreBackendAPI.Models.ViewModels;
 
 namespace OnlineStoreBackendAPI.DataAccess.Repositories;
 
 public class ProductRepository : BaseRepository<Product, int>, IProductRepository
 {
-    public ProductRepository(IDataContext context) : base(context)
-    {
-    }
+    #region Methods : private
 
-    public override Product GetById(int id)
+    private List<AttributeValue> ParseAttributeValues(ProductDto dto)
     {
-        return new Product
+        var result = new List<AttributeValue>();
+        foreach (KeyValuePair<string,string> dtoAttribute in dto.Attributes)
         {
-            Id = id,
-            Title = "Test",
-            Description = "Test",
-            Price = 12345,
-            Category = new Category
+            result.Add(new AttributeValue()
             {
-                Id = 123,
-                Title = "TestCategory",
-                Description = "TestDescription",
-                ParentCategory = null
-            },
-            AttributeValues = new List<AttributeValue>()
-
-        };
-    }
-
-    public List<Product> GetByCategory(int categoryId)
-    {
-        var result = new List<Product>
-        {
-            new Product
-            {
-                Id = 123,
-                Title = "Test",
-                Description = "Test",
-                Price = 12345,
-                Category = new Category
-                {
-                    Id = categoryId,
-                    Title = "TestCategory",
-                    Description = "TestDescription",
-                    ParentCategory = null
-                }
-            }
-        };
+                ProductAttribute = _context.ProductAttributes.FirstOrDefault(p => p.Title == dtoAttribute.Key),
+                TextValue = dtoAttribute.Value
+            });
+        }
         return result;
     }
 
-    public int Add(Product product)
+    #endregion
+
+    #region Constructors : Public
+    public ProductRepository(IDataContext context) : base(context) {}
+    
+    #endregion
+
+    #region Methods : public
+    public  List<Product> GetByCategory(int categoryId)
     {
-        return 200;
+        return  _context.Products.Where(p => p.Category.Id == categoryId).ToList();
     }
 
+    public  int Add(ProductDto dto)
+    {
+        
+        return Insert( new Product
+        {
+            Id = dto.Id,
+            Title = dto.Title,
+            Description = dto.Description,
+            Price = dto.Price,
+            Category = _context.Categories.FirstOrDefault(c => c.Title == dto.Category),
+            AttributeValues = ParseAttributeValues(dto)
+        });
+    }
+
+    #endregion
+    
+    
 }

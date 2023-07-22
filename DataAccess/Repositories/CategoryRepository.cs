@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
 using OnlineStoreBackendAPI.Models.DTO;
 using OnlineStoreBackendAPI.Models.ViewModels;
@@ -6,51 +7,30 @@ namespace OnlineStoreBackendAPI.DataAccess.Repositories;
 
 public class CategoryRepository : BaseRepository<Category,int>, ICategoryRepository
 {
+    private ICategoryRepository _categoryRepositoryImplementation;
     public CategoryRepository(IDataContext context) : base(context){}
 
-    public override Category GetById(int id)
+
+    public  List<Product> GetProductsByCategory(int categoryId)
     {
-        return new Category
-        {
-            Id = id,
-            Title = "TestCategory",
-            Description = "TestDescription",
-            ParentCategory = new Category
-            {
-                Id = 12345,
-                Title = "TestParent"
-            }
-        };
+        return  _context.Products.Where(p => p.Category.Id == categoryId).ToList();
     }
 
-    public List<Product> GetProductsByCategory(int categoryId)
+    public int Add(CategoryDto dto)
     {
-        var result = new List<Product>
+        _context.Categories.Add(new Category
         {
-            new Product
-            {
-                Id = 123,
-                Title = "Test",
-                Description = "Test",
-                Price = 12345, 
-                Category = new Category
-                {
-                    Id = categoryId,
-                    Title = "TestCategory",
-                    Description = "TestDescription",
-                    ParentCategory = new Category
-                    {
-                        Id = 12345,
-                        Title = "TestParent"
-                    }
-                }
-            }
-        };
-        return result;
+            Id = dto.Id,
+            Title = dto.Title,
+            Description = dto.Description,
+            ParentCategory = _context.Categories.Find(dto.ParentCategory.Id)
+        });
+        return _context.SaveChanges();
     }
 
-    public int Add(CategoryDto category)
+    public int AddAttribute(ProductAttribute attribute)
     {
-        return 200;
+        _context.ProductAttributes.Add(attribute);
+        return _context.SaveChanges();
     }
 }

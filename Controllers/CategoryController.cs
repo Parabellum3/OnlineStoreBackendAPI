@@ -17,7 +17,7 @@ public class CategoryController : ControllerBase
 
     [Route("api/[controller]/[action]")]
     [HttpGet]
-    public CategoryDto GetById(int id)
+    public  CategoryDto GetById(int id)
     {
         return new CategoryDto(_repository.GetById(id));
     }
@@ -26,7 +26,7 @@ public class CategoryController : ControllerBase
     [HttpGet]
     public List<ProductDto> GetProducts(int categoryId)
     {
-        var products = _repository.GetProductsByCategory(categoryId);
+        var products =  _repository.GetProductsByCategory(categoryId);
         var output = new List<ProductDto>();
         foreach (var product in products)
         {
@@ -41,5 +41,12 @@ public class CategoryController : ControllerBase
     public int Add(CategoryDto categoryDto)
     {
         return _repository.Add(categoryDto);
+    }
+
+    [Route("api/[controller]/[action]")]
+    [HttpPost]
+    public int AddAttribute(ProductAttribute attribute)
+    {
+        return _repository.AddAttribute(attribute);
     }
 }

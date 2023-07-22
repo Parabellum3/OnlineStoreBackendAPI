@@ -1,9 +1,6 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Razor.Language;
-using Microsoft.EntityFrameworkCore.Metadata;
 using OnlineStoreBackendAPI.Models.ViewModels;
-using Attribute = System.Attribute;
 
 namespace OnlineStoreBackendAPI.Models.DTO;
 
@@ -16,9 +13,8 @@ public class ProductDto
     {
         Id = product.Id;
         Title = product.Title;
-        Price = product.Price;
+        Price = product.Price; 
         Category = product.Category.Title;
-
     }
 
     [DataMember]
@@ -31,7 +27,7 @@ public class ProductDto
     [DataMember] public double Price { get; set; }
 
     [DataMember] public string Category { get; set; }
-    
+
     [DataMember] public string Description { get; set; }
 
 }

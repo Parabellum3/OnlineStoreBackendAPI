@@ -16,14 +16,15 @@ namespace OnlineStoreBackendAPI.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
-        public ProductDto GetById(int id)
+        [HttpGet("{id}")]
+        public  ProductDto GetById(int id)
         {
-            return new ProductDto(_repository.GetById(id));
+            var product =  _repository.GetById(id);
+            return new ProductDto( product);
         }
 
-        [HttpGet]
-        public List<ProductDto> GetByCategory(int categoryId)
+        [HttpGet("{categoryId}")]
+        public ActionResult GetByCategory(int categoryId)
         {
             var products = _repository.GetByCategory(categoryId);
             List<ProductDto> output = new List<ProductDto>();
@@ -32,7 +33,11 @@ namespace OnlineStoreBackendAPI.Controllers
                 output.Add(new ProductDto(product));
             }
 
-            return output;
+            if (output.Count == 0)
+            {
+                return NotFound("No products in this category");
+            }
+            return (Ok(output));
         }
 
         [HttpPost]

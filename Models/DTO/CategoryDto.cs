@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using Microsoft.CodeAnalysis.Operations;
 using OnlineStoreBackendAPI.Models.ViewModels;
 
 namespace OnlineStoreBackendAPI.Models.DTO;
@@ -19,5 +18,5 @@ public class CategoryDto : BaseDto
     public string Description { get; set; }
     public CategoryDto ParentCategory { get; set; }
 
-    
+
 }

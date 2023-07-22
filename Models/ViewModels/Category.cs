@@ -1,9 +1,14 @@
+using Microsoft.Build.Framework;
+using Microsoft.VisualStudio.Debugger.Contracts.HotReload;
+
 namespace OnlineStoreBackendAPI.Models.ViewModels;
 
 public class Category : BaseModel
 {
-    public Category ParentCategory { get; set; }
-
     
+    public Category? ParentCategory { get; set; }
+    public ICollection<ProductAttribute> ProductAttributes { get; set; }
+    public ICollection<Product> Products { get; set; }
+    public ICollection<Category> ChildCategories { get; set; }
 }
 
