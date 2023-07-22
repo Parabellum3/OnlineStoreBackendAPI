@@ -1,5 +1,4 @@
 using OnlineStoreBackendAPI.Models.ViewModels;
-
 namespace OnlineStoreBackendAPI.DataAccess.Abstracts;
 
 public interface IRepository<TEntity, TKey> where TEntity: BaseModel

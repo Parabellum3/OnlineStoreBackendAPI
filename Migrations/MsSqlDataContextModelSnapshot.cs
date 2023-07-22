@@ -39,6 +39,9 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.Property<int>("ShippingMethod")
                         .HasColumnType("int");
 
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -53,9 +56,11 @@ namespace OnlineStoreBackendAPI.Migrations
 
                     b.HasIndex("ShippingAddressId");
 
+                    b.HasIndex("StatusId");
+
                     b.HasIndex("UserId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("OnlineStoreBackendAPI.Models.ViewModels.Address", b =>
@@ -268,6 +273,26 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.ToTable("OrderProduct");
                 });
 
+            modelBuilder.Entity("OnlineStoreBackendAPI.Models.ViewModels.OrderStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderStatus");
+                });
+
             modelBuilder.Entity("OnlineStoreBackendAPI.Models.ViewModels.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -352,16 +377,24 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.Address", "ShippingAddress")
                         .WithMany()
                         .HasForeignKey("ShippingAddressId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.OrderStatus", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ShippingAddress");
+
+                    b.Navigation("Status");
 
                     b.Navigation("User");
                 });
@@ -371,7 +404,7 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.User", "User")
                         .WithMany("Addresses")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -382,13 +415,13 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.ProductAttribute", "ProductAttribute")
                         .WithMany()
                         .HasForeignKey("ProductAttributeId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.Product", "Product")
                         .WithMany("AttributeValues")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
@@ -401,7 +434,7 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -412,13 +445,13 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.Cart", "Cart")
                         .WithMany("CartProducts")
                         .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cart");
@@ -440,13 +473,13 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.HasOne("OnlineStoreBackendAPI.DataAccess.Abstracts.Order", "Order")
                         .WithMany("OrderProducts")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Order");
@@ -459,7 +492,7 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -470,7 +503,7 @@ namespace OnlineStoreBackendAPI.Migrations
                     b.HasOne("OnlineStoreBackendAPI.Models.ViewModels.Category", "Category")
                         .WithMany("ProductAttributes")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");

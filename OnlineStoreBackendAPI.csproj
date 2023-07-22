@@ -22,6 +22,9 @@
       <Compile Remove="OnlineStoreBackendTests\**" />
       <Compile Remove="OnlineStoreBackend.Tests\**" />
       <Compile Remove="OnlineStoreBackendAPI.Common\**" />
+      <Compile Update="DataAccess\MsSqlDataContext.cs">
+        <DependentUpon>IDataContext.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
