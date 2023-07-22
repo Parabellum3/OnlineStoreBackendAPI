@@ -3760,6 +3760,19 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "OnlineStoreBackendAPI.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Abstractions": "8.0.0-preview.4.23259.3"
+        },
+        "compile": {
+          "bin/placeholder/OnlineStoreBackendAPI.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OnlineStoreBackendAPI.Common.dll": {}
+        }
       }
     }
   },
@@ -10633,6 +10646,11 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "OnlineStoreBackendAPI.Common/1.0.0": {
+      "type": "project",
+      "path": "OnlineStoreBackendAPI.Common/OnlineStoreBackendAPI.Common.csproj",
+      "msbuildProject": "OnlineStoreBackendAPI.Common/OnlineStoreBackendAPI.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10642,6 +10660,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.0-preview.4.23259.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0-preview.4.23259.3",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.13",
+      "OnlineStoreBackendAPI.Common >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -10669,7 +10688,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\y.sokil\\Desktop\\OnlineStore\\OnlineStoreBackendAPI\\OnlineStoreBackendAPI.Common\\OnlineStoreBackendAPI.Common.csproj": {
+              "projectPath": "C:\\Users\\y.sokil\\Desktop\\OnlineStore\\OnlineStoreBackendAPI\\OnlineStoreBackendAPI.Common\\OnlineStoreBackendAPI.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
