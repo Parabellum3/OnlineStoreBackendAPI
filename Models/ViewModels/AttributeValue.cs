@@ -2,6 +2,7 @@ namespace OnlineStoreBackendAPI.Models.ViewModels;
 
 public class AttributeValue : BaseModel
 {
+    public new string? Title { get; set; }
     public Product Product { get; set; }
     public ProductAttribute ProductAttribute { get; set; }
     public int IntValue { get; set; }
