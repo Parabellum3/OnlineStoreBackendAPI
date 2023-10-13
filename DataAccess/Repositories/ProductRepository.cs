@@ -1,6 +1,6 @@
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
 using OnlineStoreBackendAPI.Models.DTO;
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 
 namespace OnlineStoreBackendAPI.DataAccess.Repositories;
 
@@ -15,7 +15,7 @@ public class ProductRepository : BaseRepository<Product, int>, IProductRepositor
         {
             result.Add(new AttributeValue()
             {
-                ProductAttribute = _context.ProductAttributes.FirstOrDefault(p => p.Title == dtoAttribute.Key),
+                ProductAttribute = Context.ProductAttributes.FirstOrDefault(p => p.Title == dtoAttribute.Key),
                 TextValue = dtoAttribute.Value
             });
         }
@@ -32,10 +32,10 @@ public class ProductRepository : BaseRepository<Product, int>, IProductRepositor
     #region Methods : public
     public  List<Product> GetByCategory(int categoryId)
     {
-        return  _context.Products.Where(p => p.Category.Id == categoryId).ToList();
+        return  Context.Products.Where(p => p.Category.Id == categoryId).ToList();
     }
 
-    public  int Add(ProductDto dto)
+    public int Add(ProductDto dto)
     {
         
         return Insert( new Product
@@ -44,7 +44,7 @@ public class ProductRepository : BaseRepository<Product, int>, IProductRepositor
             Title = dto.Title,
             Description = dto.Description,
             Price = dto.Price,
-            Category = _context.Categories.FirstOrDefault(c => c.Title == dto.Category),
+            Category = Context.Categories.FirstOrDefault(c => c.Title == dto.Category),
             AttributeValues = ParseAttributeValues(dto)
         });
     }

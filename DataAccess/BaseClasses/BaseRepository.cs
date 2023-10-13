@@ -1,35 +1,42 @@
-using OnlineStoreBackendAPI.Models.ViewModels;
+using System.Net.Mime;
+using OnlineStoreBackendAPI.Models.Entities;
 
 namespace OnlineStoreBackendAPI.DataAccess.Abstracts;
 
 public abstract class BaseRepository<TEntity,TKey> : IRepository<TEntity, TKey> where TEntity : BaseModel
 {
-    protected readonly IDataContext _context;
+    protected readonly IDataContext Context;
 
     protected BaseRepository(IDataContext context)
     {
-        _context = context;
+        Context = context;
     }
 
     public virtual IEnumerable<TEntity> GetCollection(int fetch = 30, int skip = 0)
     {
-        return _context.Set<TEntity>().Skip(skip).Take(fetch);
+        return Context.Set<TEntity>().Skip(skip).Take(fetch);
     }
 
     public virtual  TEntity GetById(TKey id)
     {
-        return _context.Set<TEntity>().Find(id);
+        var result = Context.Set<TEntity>().Find(id);
+        if (result == null)
+        {
+            throw new ArgumentException("Record with this Id doesn't exist");
+        }
+        return result;
+
     }
 
     public  virtual int Insert(TEntity entity)
     {
-        _context.Set<TEntity>().Add(entity);
-        return _context.SaveChanges();
+        Context.Set<TEntity>().Add(entity);
+        return Context.SaveChanges();
     }
 
     public virtual int Delete(TKey id)
     {
-        var entity = _context.Set<TEntity>().Find(id);
+        var entity = Context.Set<TEntity>().Find(id);
         if (entity != null)
         {
             return Delete(entity);
@@ -39,13 +46,13 @@ public abstract class BaseRepository<TEntity,TKey> : IRepository<TEntity, TKey> 
 
     public virtual int Delete(TEntity entity)
     {
-        _context.Set<TEntity>().Remove(entity);
-       return _context.SaveChanges();
+        Context.Set<TEntity>().Remove(entity);
+       return Context.SaveChanges();
     }
-
-    //TODO implement update
-    public virtual int Update(TKey id,TEntity entity)
+    
+    public virtual int Update(TEntity entity)
     {
-        return 1;
+        Context.Set<TEntity>().Update(entity);
+        return Context.SaveChanges();
     }
 }

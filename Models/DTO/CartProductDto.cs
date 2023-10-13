@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 
 namespace OnlineStoreBackendAPI.DataAccess.Repositories;
 

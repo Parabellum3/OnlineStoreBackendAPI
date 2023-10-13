@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 
 
 namespace OnlineStoreBackendAPI.DataAccess.Abstracts;

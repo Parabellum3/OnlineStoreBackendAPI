@@ -1,4 +1,4 @@
-namespace OnlineStoreBackendAPI.Models.ViewModels;
+namespace OnlineStoreBackendAPI.Models.Entities;
 
 public class Category : BaseModel
 {

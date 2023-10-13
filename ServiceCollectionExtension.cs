@@ -12,5 +12,6 @@ public static class ServiceCollectionExtension
         collection.AddScoped<IDataContext, MsSqlDataContext>();
         collection.AddScoped<ICategoryRepository, CategoryRepository>();
         collection.AddScoped<ICartRepository, CartRepository>();
+        collection.AddScoped<IOrderRepository, OrderRepository>();
     }
 }

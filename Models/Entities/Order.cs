@@ -1,5 +1,5 @@
 using OnlineStoreBackendAPI.Models.Enums;
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 
 namespace OnlineStoreBackendAPI.DataAccess.Abstracts;
 
@@ -13,7 +13,7 @@ public class Order : BaseModel
 
     public ShippingMethod ShippingMethod { get; set; }
     
-    public Address ShippingAddress { get; set; }
+    public Address? ShippingAddress { get; set; }
     
-    public OrderStatus Status { get; set; }
+    public OrderStatus? Status { get; set; }
 }

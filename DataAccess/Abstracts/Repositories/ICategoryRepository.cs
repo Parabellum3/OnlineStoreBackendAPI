@@ -1,5 +1,5 @@
 using OnlineStoreBackendAPI.Models.DTO;
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 
 namespace OnlineStoreBackendAPI.DataAccess.Abstracts;
 

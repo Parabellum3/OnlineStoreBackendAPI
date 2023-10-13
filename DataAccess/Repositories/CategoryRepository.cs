@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
 using OnlineStoreBackendAPI.Models.DTO;
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 
 namespace OnlineStoreBackendAPI.DataAccess.Repositories;
 
@@ -13,40 +13,40 @@ public class CategoryRepository : BaseRepository<Category,int>, ICategoryReposit
 
     public  List<Product> GetProductsByCategory(int categoryId)
     {
-        return  _context.Products.Where(p => p.Category.Id == categoryId).ToList();
+        return  Context.Products.Where(p => p.Category.Id == categoryId).ToList();
     }
 
     public int Add(CategoryDto dto)
     {
-        _context.Categories.Add(new Category
+        Context.Categories.Add(new Category
         {
             Id = dto.Id,
             Title = dto.Title,
             Description = dto.Description,
-            ParentCategory = _context.Categories.Find(dto.ParentCategory.Id)
+            ParentCategory = Context.Categories.Find(dto.ParentCategory.Id)
         });
-        return _context.SaveChanges();
+        return Context.SaveChanges();
     }
 
     public int AddAttribute(ProductAttributeDto attribute)
     {
-        var category = _context.Categories.Include(c => c.Products).FirstOrDefault(p => p.Id == attribute.CategoryId);
+        var category = Context.Categories.Include(c => c.Products).FirstOrDefault(p => p.Id == attribute.CategoryId);
         var productAttribute = new ProductAttribute()
         {
             Title = attribute.Title,
             Category = category
         };
-        _context.ProductAttributes.Add(productAttribute);
+        Context.ProductAttributes.Add(productAttribute);
         
         foreach (Product product in category.Products)
         {
-            _context.AttributeValues.Add(new AttributeValue()
+            Context.AttributeValues.Add(new AttributeValue()
             {
                 TextValue = attribute.DefValue,
                 Product = product,
                 ProductAttribute = productAttribute
             });
         }
-        return _context.SaveChanges();
+        return Context.SaveChanges();
     }
 }

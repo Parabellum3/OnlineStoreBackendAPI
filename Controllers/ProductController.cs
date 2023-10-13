@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
 using OnlineStoreBackendAPI.Models.DTO;
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 
 namespace OnlineStoreBackendAPI.Controllers
 {
@@ -41,10 +41,10 @@ namespace OnlineStoreBackendAPI.Controllers
         }
 
         [HttpPost]
-        public int Add(ProductDto dto)
+        public ActionResult Add(ProductDto dto)
         {
-            
-            return 200;
+
+            return Ok(_repository.Add(dto));
         }
 
     }

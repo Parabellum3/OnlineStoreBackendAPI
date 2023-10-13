@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OnlineStoreBackendAPI.Models.ViewModels;
+namespace OnlineStoreBackendAPI.Models.Entities;
 
 public class User : BaseModel
 {

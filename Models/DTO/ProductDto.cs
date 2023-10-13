@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 
 namespace OnlineStoreBackendAPI.Models.DTO;
 
@@ -14,7 +14,7 @@ public class ProductDto
         Id = product.Id;
         Title = product.Title;
         Price = product.Price; 
-        Category = product.Category.Title;
+     //   Category = product.Category?.Title;
     }
 
     [DataMember]

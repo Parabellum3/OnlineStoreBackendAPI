@@ -15,13 +15,13 @@ namespace OnlineStoreBackendAPI.Controllers{
         }
 
         [HttpPost]
-        public  ActionResult AddProductToUserCart(int productId, int cartId)
+        public ActionResult AddProductToUserCart(int productId, int cartId, int quantity = 1 )
         {
-            return Ok(_repository.AddProductToCart(productId, cartId));
+            return Ok(_repository.AddProductToCart(productId, cartId, quantity));
         }
 
         [HttpPost]
-        public  ActionResult CreateOrder(int cartId)
+        public ActionResult CreateOrder(int cartId)
         {
             return Ok( _repository.CreateOrder(cartId));
         }
@@ -30,6 +30,12 @@ namespace OnlineStoreBackendAPI.Controllers{
         public  ActionResult GetProducts(int cartId)
         {
             return  Ok(_repository.GetProducts(cartId));
+        }
+
+        [HttpPost]
+        public ActionResult RemoveProduct(int productId, int cartId)
+        {
+            return Ok(_repository.RemoveProduct(productId, cartId));
         }
     }
 }

@@ -1,4 +1,6 @@
-namespace OnlineStoreBackendAPI.Models.ViewModels;
+using Microsoft.EntityFrameworkCore.Metadata;
+
+namespace OnlineStoreBackendAPI.Models.Entities;
 
 public class AttributeValue : BaseModel
 {
@@ -11,3 +13,5 @@ public class AttributeValue : BaseModel
     public DateTime DateTimeValue { get; set; }
     public Guid? GuidValue { get; set; }
 }
+
+

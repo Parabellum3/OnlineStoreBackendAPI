@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 
 
 namespace OnlineStoreBackendAPI.DataAccess.Abstracts;
@@ -31,7 +31,8 @@ public abstract class BaseDbContext<T>: DbContext,IDataContext where T: DbContex
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Product>().Navigation("Category").AutoInclude();
+     //   modelBuilder.Entity<Product>().Navigation("Category").AutoInclude();
+        base.OnModelCreating(modelBuilder);
     }
 
     #endregion

@@ -5,16 +5,31 @@ using OnlineStoreBackendAPI.Models.Enums;
 namespace OnlineStoreBackendAPI.Controllers;
 
 public class OrderController : ControllerBase
-{//TODO implement controller
-    public OrderController(IOrderRepository _repository)
+{
+    private readonly IOrderRepository _repository;
+    
+    public OrderController(IOrderRepository repository)
     {
-        
+        _repository = repository;
     }
     [Route("/api/[controller]/[action]")]
     [HttpPost]
-    public int FinalizeOrder(int orderId, ShippingMethod shippingMethod = ShippingMethod.NovaPoshta)
-    {
-        return 1;
+    public ActionResult FinalizeOrder(int orderId, ShippingMethod shippingMethod = ShippingMethod.NovaPoshta) {
+        return Ok(_repository.Finalize(orderId, shippingMethod));
     }
+
+    [Route("/api/[controller]/[action]")]
+    [HttpPost]
+    public ActionResult CreateOrderFromCart(int cartId) {
+        return Ok(_repository.CreateOrderFromCart(cartId));
+    }
+    
+    [Route("/api/[controller]/[action]")]
+    [HttpPost]
+    public ActionResult GetByUser(int userId) {
+        return Ok(_repository.GetByUser(userId));
+    }
+    
+    
 }
 

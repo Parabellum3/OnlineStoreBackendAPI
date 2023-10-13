@@ -1,4 +1,4 @@
-using OnlineStoreBackendAPI.Models.ViewModels;
+using OnlineStoreBackendAPI.Models.Entities;
 namespace OnlineStoreBackendAPI.DataAccess.Abstracts;
 
 public interface IRepository<TEntity, TKey> where TEntity: BaseModel
@@ -46,7 +46,7 @@ public interface IRepository<TEntity, TKey> where TEntity: BaseModel
     /// <param name="id"></param>
     /// <param name="entity"></param>
     /// <returns>Success</returns>
-    int Update(TKey id, TEntity entity);
+    int Update(TEntity entity);
 
 
 
