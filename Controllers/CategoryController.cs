@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineStoreBackendAPI.DataAccess.Abstracts;
 using OnlineStoreBackendAPI.Models.DTO;
-using OnlineStoreBackendAPI.Models.Entities;
 
 namespace OnlineStoreBackendAPI.Controllers;
 
